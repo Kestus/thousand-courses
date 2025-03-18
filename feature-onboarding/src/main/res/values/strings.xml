@@ -1,0 +1,17 @@
+<resources>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_login">Вход</string>
+    <string name="et_label_email">Email</string>
+    <string name="et_hint_email">example@gmail.com</string>
+    <string name="et_label_password">Пароль</string>
+    <string name="et_hint_password">Введите пароль</string>
+    <string name="btn_text_login">Вход</string>
+    <string name="tv_no_account">Нет аккаунта?</string>
+    <string name="btn_text_register">Регистрация</string>
+    <string name="btn_login_vk_desc">Логин через Вконтакте</string>
+    <string name="btn_login_ok_desc">Логин через Одноклассники</string>
+    <string name="btn_text_forgot_password">Забыл Пароль</string>
+</resources>

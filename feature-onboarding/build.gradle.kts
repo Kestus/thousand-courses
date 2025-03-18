@@ -1,20 +1,17 @@
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
 }
 
 android {
-    namespace = "ru.kestus.thousand_courses"
+    namespace = "ru.kestus.feature_onboarding"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "ru.kestus.thousand_courses"
         minSdk = 24
-        targetSdk = 35
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -41,11 +38,6 @@ android {
 dependencies {
 
     implementation(project(":core"))
-    implementation(project(":domain"))
-    implementation(project(":feature-onboarding"))
-
-    // TODO: delete
-    implementation(project(":data"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -55,5 +47,13 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    // android fragments
+    implementation(libs.androidx.fragment.ktx)
+
+    // jetpack navigation
+    implementation(libs.androidx.navigation.ui)
+    implementation(libs.androidx.navigation.fragment)
+
 
 }
