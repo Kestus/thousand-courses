@@ -7,18 +7,22 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import ru.kestus.core.data.preferences.PreferencesStorageImpl
+import dagger.hilt.android.AndroidEntryPoint
 import ru.kestus.core.domain.preferences.PreferencesStorage
 import ru.kestus.presentation.CoursesActivity
 import ru.kestus.presentation.OnboardingActivity
 import ru.kestus.thousand_courses.databinding.ActivityMainBinding
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var preferencesStorage: PreferencesStorage
     private val binding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }
+
+    @Inject
+    lateinit var preferencesStorage: PreferencesStorage
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,8 +37,6 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
-        preferencesStorage = PreferencesStorageImpl(baseContext)
 
         if (!isLoggedIn()) {
             startActivityAndFinish(OnboardingActivity::class.java)

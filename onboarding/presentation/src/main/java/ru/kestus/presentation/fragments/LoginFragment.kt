@@ -1,29 +1,39 @@
 package ru.kestus.presentation.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import ru.kestus.presentation.R
+import dagger.hilt.android.AndroidEntryPoint
+import ru.kestus.core.domain.preferences.PreferencesStorage
+import ru.kestus.presentation.databinding.FragmentLoginBinding
+import javax.inject.Inject
 
-
+@AndroidEntryPoint
 class LoginFragment : Fragment() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    @Inject
+    lateinit var preferencesStorage: PreferencesStorage
+
+    private var _binding: FragmentLoginBinding? = null
+    private val binding get() = _binding ?: throw RuntimeException("FragmentLoginBinding == null")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login, container, false)
+    ): View {
+        _binding = FragmentLoginBinding.inflate(layoutInflater)
+        return binding.root
     }
 
-    companion object {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        Log.d("TAG", "onViewCreated: ${preferencesStorage.get("123")}")
+    }
 
-        fun newInstance() = LoginFragment()
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

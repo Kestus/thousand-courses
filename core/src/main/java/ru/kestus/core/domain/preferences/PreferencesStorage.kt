@@ -1,6 +1,6 @@
 package ru.kestus.core.domain.preferences
 
-interface  PreferencesStorage {
+interface PreferencesStorage {
 
     fun put(key: String, value: String)
 
