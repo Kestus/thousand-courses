@@ -1,20 +1,17 @@
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
 }
 
 android {
-    namespace = "ru.kestus.thousand_courses"
+    namespace = "ru.kestus.presentation"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "ru.kestus.thousand_courses"
         minSdk = 24
-        targetSdk = 35
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -40,10 +37,7 @@ android {
 
 dependencies {
 
-    implementation(project(":core"))
     implementation(project(":design"))
-    implementation(project(":onboarding:presentation"))
-    implementation(project(":courses:presentation"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -53,5 +47,4 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-
 }

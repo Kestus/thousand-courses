@@ -7,11 +7,11 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import ru.kestus.data.PreferencesStorageImpl
-import ru.kestus.domain.PreferencesStorage
-import ru.kestus.feature_onboarding.OnboardingActivity
+import ru.kestus.core.data.preferences.PreferencesStorageImpl
+import ru.kestus.core.domain.preferences.PreferencesStorage
+import ru.kestus.presentation.CoursesActivity
+import ru.kestus.presentation.OnboardingActivity
 import ru.kestus.thousand_courses.databinding.ActivityMainBinding
-import ru.kestus.thousand_courses.mainActivity.CoursesActivity
 
 class MainActivity : AppCompatActivity() {
 
