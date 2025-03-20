@@ -3,18 +3,19 @@ package ru.kestus.thousand_courses.presentation
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.ui.setupWithNavController
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import ru.kestus.presentation.OnboardingActivity
 import ru.kestus.thousand_courses.databinding.ActivityMainBinding
-import ru.kestus.thousand_courses.presentation.fragment.MainScreenFragment
 import ru.kestus.thousand_courses.presentation.viewModel.MainViewModel
 
 
@@ -46,6 +47,7 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         observeSession()
+        setupBottomBarNavigation()
     }
 
     override fun onResume() {
@@ -55,21 +57,22 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // Start onboarding activity, if not logged-in
     private fun observeSession() {
         viewModel.session.observe(this) {
             val value = it
             if (value == null) {
-                startActivity(OnboardingActivity::class.java)
+                val intent = Intent(baseContext, OnboardingActivity::class.java)
+                startActivity(intent)
             } else {
-                supportFragmentManager.commit {
-                    add(binding.fragmentContainerMain.id, MainScreenFragment.newInstance())
-                }
+                binding.main.visibility = View.VISIBLE
             }
         }
     }
 
-    private fun startActivity(cls: Class<out AppCompatActivity>) {
-        val intent = Intent(baseContext, cls)
-        startActivity(intent)
+    private fun setupBottomBarNavigation() {
+        val navController = findNavController(binding.fragmentContainerMain)
+        binding.bottomNavBar.setupWithNavController(navController)
     }
+
 }

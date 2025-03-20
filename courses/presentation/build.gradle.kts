@@ -1,6 +1,9 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+
+    alias(libs.plugins.kotlin.ksp)
+    alias(libs.plugins.hilt.android)
 }
 
 android {
@@ -51,4 +54,8 @@ dependencies {
     // jetpack navigation
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.navigation.fragment.ktx)
+
+    // dagger hilt
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.compiler)
 }

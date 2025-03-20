@@ -7,13 +7,13 @@
 
     <include app:graph="@navigation/courses_navigation" />
     <fragment
-        android:id="@+id/nav_item_favourites"
-        android:name="ru.kestus.thousand_courses.presentation.fragment.FavouritesFragment"
-        android:label="fragment_favourites"
-        tools:layout="@layout/fragment_favourites" />
-    <fragment
         android:id="@+id/nav_item_account"
         android:name="ru.kestus.thousand_courses.presentation.fragment.AccountFragment"
         android:label="fragment_account"
         tools:layout="@layout/fragment_account" />
+    <fragment
+        android:id="@+id/nav_item_favourites"
+        android:name="ru.kestus.thousand_courses.presentation.fragment.FavouritesFragment"
+        android:label="fragment_favourites"
+        tools:layout="@layout/fragment_favourites" />
 </navigation>

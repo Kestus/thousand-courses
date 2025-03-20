@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/courses_navigation"
-    app:startDestination="@id/nav_item_home">
+    app:startDestination="@id/courses_list">
 
     <fragment
-        android:id="@+id/nav_item_home"
+        android:id="@+id/courses_list"
         android:name="ru.kestus.presentation.CoursesFragment"
         android:label="fragment_courses"
         tools:layout="@layout/fragment_courses" />
