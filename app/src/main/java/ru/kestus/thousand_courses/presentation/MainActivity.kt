@@ -1,20 +1,22 @@
-package ru.kestus.thousand_courses
+package ru.kestus.thousand_courses.presentation
 
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import ru.kestus.presentation.CoursesActivity
 import ru.kestus.presentation.OnboardingActivity
 import ru.kestus.thousand_courses.databinding.ActivityMainBinding
+import ru.kestus.thousand_courses.presentation.fragment.MainScreenFragment
+import ru.kestus.thousand_courses.presentation.viewModel.MainViewModel
+
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -33,32 +35,40 @@ class MainActivity : AppCompatActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             window.isNavigationBarContrastEnforced = false
         }
+        // default padding "systemBars.bottom" adds too much padding to bottom nav bar
         ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, 0)
             insets
         }
-        Log.d("TAG", "onCreate: ${application.packageName}")
+    }
+
+    override fun onStart() {
+        super.onStart()
         observeSession()
-        loadSession()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        lifecycleScope.launch {
+            viewModel.loadSession()
+        }
     }
 
     private fun observeSession() {
         viewModel.session.observe(this) {
             val value = it
             if (value == null) {
-                startActivityAndFinish(OnboardingActivity::class.java)
+                startActivity(OnboardingActivity::class.java)
             } else {
-                startActivityAndFinish(CoursesActivity::class.java)
+                supportFragmentManager.commit {
+                    add(binding.fragmentContainerMain.id, MainScreenFragment.newInstance())
+                }
             }
         }
     }
 
-    private fun loadSession() = lifecycleScope.launch {
-        viewModel.loadSession()
-    }
-
-    private fun startActivityAndFinish(cls: Class<out AppCompatActivity>) {
+    private fun startActivity(cls: Class<out AppCompatActivity>) {
         val intent = Intent(baseContext, cls)
         startActivity(intent)
     }

@@ -12,12 +12,12 @@ class SessionStorageImpl @Inject constructor(
     private val prefsName = application.packageName
     private val prefs = application.getSharedPreferences(prefsName, MODE_PRIVATE)
 
-    override suspend fun getSession(): String? {
-        return prefs.getString(KEY_SESSION, null)
-    }
-
     override suspend fun setSession(value: String) {
         prefs.edit().putString(KEY_SESSION, value).apply()
+    }
+
+    override suspend fun getSession(): String? {
+        return prefs.getString(KEY_SESSION, null)
     }
 
     override suspend fun removeSession() {

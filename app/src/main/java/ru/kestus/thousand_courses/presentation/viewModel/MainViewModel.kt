@@ -1,4 +1,4 @@
-package ru.kestus.thousand_courses
+package ru.kestus.thousand_courses.presentation.viewModel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -17,19 +17,23 @@ class MainViewModel @Inject constructor(
     private val _session = MutableLiveData<String>()
     val session: LiveData<String> get() = _session
 
+    // TODO: remove
 //    init {
-//        // TODO: remove logout
-//        val scope = CoroutineScope(Dispatchers.IO)
-//        scope.launch {
+//        val ioScope = CoroutineScope(Dispatchers.IO)
+//        ioScope.launch {
 //            sessionStorage.removeSession()
 //        }
 //    }
 
     suspend fun loadSession() {
-        var result: String?
         withContext(Dispatchers.IO) {
-            result = sessionStorage.getSession()
+            _session.postValue(sessionStorage.getSession())
         }
-        _session.value = result
+    }
+
+    suspend fun removeSession() {
+        withContext(Dispatchers.IO) {
+            sessionStorage.removeSession()
+        }
     }
 }

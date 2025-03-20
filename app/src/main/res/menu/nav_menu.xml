@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_item_home"
+        android:enabled="true"
+        android:icon="@drawable/ic_home"
+        android:title="@string/nav_title_main"/>
+
+    <item
+        android:id="@+id/nav_item_favourites"
+        android:enabled="true"
+        android:icon="@drawable/ic_fav"
+        android:title="@string/nav_title_favourite"/>
+
+    <item
+        android:id="@+id/nav_item_account"
+        android:enabled="true"
+        android:icon="@drawable/ic_account"
+        android:title="@string/nav_title_account"/>
+
+
+</menu>
