@@ -3,16 +3,18 @@ package ru.kestus.thousand_courses
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
-import ru.kestus.core.domain.preferences.PreferencesStorage
+import kotlinx.coroutines.launch
 import ru.kestus.presentation.CoursesActivity
 import ru.kestus.presentation.OnboardingActivity
 import ru.kestus.thousand_courses.databinding.ActivityMainBinding
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -21,8 +23,7 @@ class MainActivity : AppCompatActivity() {
         ActivityMainBinding.inflate(layoutInflater)
     }
 
-    @Inject
-    lateinit var preferencesStorage: PreferencesStorage
+    private val viewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,23 +38,28 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
-        if (!isLoggedIn()) {
-            startActivityAndFinish(OnboardingActivity::class.java)
-        } else {
-            startActivityAndFinish(CoursesActivity::class.java)
-        }
-
+        Log.d("TAG", "onCreate: ${application.packageName}")
+        observeSession()
+        loadSession()
     }
 
-    private fun isLoggedIn(): Boolean {
-        val session = preferencesStorage.get(PreferencesStorage.KEY_SESSION)
-        return session != null
+    private fun observeSession() {
+        viewModel.session.observe(this) {
+            val value = it
+            if (value == null) {
+                startActivityAndFinish(OnboardingActivity::class.java)
+            } else {
+                startActivityAndFinish(CoursesActivity::class.java)
+            }
+        }
+    }
+
+    private fun loadSession() = lifecycleScope.launch {
+        viewModel.loadSession()
     }
 
     private fun startActivityAndFinish(cls: Class<out AppCompatActivity>) {
         val intent = Intent(baseContext, cls)
         startActivity(intent)
-        finish()
     }
 }

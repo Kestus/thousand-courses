@@ -36,8 +36,4 @@ class HeadlineFragment : Fragment() {
             findNavController().navigate(R.id.action_headlineFragment_to_loginFragment)
         }
     }
-
-    companion object {
-        fun newInstance() = HeadlineFragment()
-    }
 }

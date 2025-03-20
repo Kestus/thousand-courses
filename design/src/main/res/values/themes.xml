@@ -5,7 +5,7 @@
 
         <item name="colorPrimary">@color/white</item>
         <item name="colorOnPrimary">@color/dark</item>
-        <item name="colorSecondary">#EFFFE5</item>
+        <item name="colorSecondary">#3312B956</item>
 
         <item name="android:windowBackground">?attr/colorPrimary</item>
 

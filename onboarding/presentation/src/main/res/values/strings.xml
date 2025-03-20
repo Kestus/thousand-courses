@@ -12,4 +12,6 @@
     <string name="btn_text_forgot_password">Забыл Пароль</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="input_email_error">Неправильно введен Email!</string>
+    <string name="input_password_error">Поле не должно быть пустым!</string>
 </resources>
