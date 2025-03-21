@@ -15,5 +15,23 @@
         <item name="color">?attr/colorOnBackground</item>
     </style>
 
+    <style name="TextAppearance.Thousandcourses.Body.Small" parent="TextAppearance.Material3.BodySmall">
+        <item name="android:textSize">12sp</item>
+        <item name="lineHeight">16dp</item>
+        <item name="fontWeight">400</item>
+        <item name="color">?attr/colorOnBackground</item>
+    </style>
+
+    <style name="TextAppearance.Thousandcourses.Caption" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textSize">12sp</item>
+        <item name="lineHeight">14dp</item>
+        <item name="fontWeight">400</item>
+        <item name="color">?attr/colorOnBackground</item>
+    </style>
+
+
+
+
+
 
 </resources>

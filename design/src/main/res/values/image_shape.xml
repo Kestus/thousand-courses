@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="image_shape">
+        <item name="cornerSizeTopLeft">@dimen/course_card_corner_radius</item>
+        <item name="cornerSizeTopRight">@dimen/course_card_corner_radius</item>
+        <item name="cornerSizeBottomRight">@dimen/course_card_corner_radius</item>
+        <item name="cornerSizeBottomLeft">@dimen/course_card_corner_radius</item>
+    </style>
+</resources>

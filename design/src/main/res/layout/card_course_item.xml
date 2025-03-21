@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:backgroundTint="?attr/colorSecondary"
+    app:cardCornerRadius="@dimen/course_card_corner_radius"
+    app:cardElevation="4dp"
+    app:cardUseCompatPadding="true"
+    tools:layout_editor_absoluteX="-14dp"
+    tools:layout_editor_absoluteY="-18dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/card_item_image"
+            android:layout_width="match_parent"
+            android:layout_height="144dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/test"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearance="@style/image_shape" />
+
+        <ImageButton
+            android:id="@+id/card_btn_favourite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="6dp"
+            android:background="@drawable/shape_icon_button"
+            android:src="@drawable/ic_fav_filled"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/card_item_rating"
+            style="@style/TextAppearance.Thousandcourses.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/shape_rounded_corners"
+            android:backgroundTint="@color/glass"
+            android:drawablePadding="4dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:textColor="?attr/colorOnPrimary"
+            app:drawableLeftCompat="@drawable/ic_star_small"
+            app:layout_constraintBottom_toBottomOf="@+id/card_item_image"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="4.5" />
+
+        <TextView
+            android:id="@+id/card_item_date"
+            style="@style/TextAppearance.Thousandcourses.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/shape_rounded_corners"
+            android:backgroundTint="@color/glass"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:textColor="?attr/colorOnPrimary"
+            app:layout_constraintBottom_toBottomOf="@id/card_item_image"
+            app:layout_constraintStart_toEndOf="@id/card_item_rating"
+            tools:text="22 мая 2024" />
+
+        <Space
+            android:id="@+id/spacer_left"
+            android:layout_width="16dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/card_item_image" />
+
+        <Space
+            android:id="@+id/spacer_right"
+            android:layout_width="16dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/card_item_image" />
+
+        <TextView
+            android:id="@+id/card_item_title"
+            style="@style/TextAppearance.Thousandcourses.Title.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColor="?attr/colorOnPrimary"
+            app:layout_constraintStart_toEndOf="@id/spacer_left"
+            app:layout_constraintTop_toBottomOf="@id/card_item_image"
+            tools:text="Java-разработчик" />
+
+        <TextView
+            android:id="@+id/card_item_info"
+            style="@style/TextAppearance.Thousandcourses.Body.Small"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp"
+            app:layout_constraintEnd_toStartOf="@id/spacer_right"
+            app:layout_constraintStart_toEndOf="@id/spacer_left"
+            app:layout_constraintTop_toBottomOf="@id/card_item_title"
+            tools:text="Освойте backend-разработку и программирование на Java, фреймворки Spring и Maven, работу с базами данных и API. Создайте свой собственный проект, собрав портфолио и став востребованным специалистом для любой IT компании." />
+
+        <TextView
+            android:id="@+id/card_item_price"
+            style="@style/TextAppearance.Thousandcourses.Title.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/spacer_left"
+            app:layout_constraintTop_toBottomOf="@id/card_item_info"
+            tools:text="12 000"
+            />
+
+
+        <Button
+            android:id="@+id/card_btn_more"
+            style="@style/Widget.Thousandcourses.TextButton.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="0dp"
+            android:paddingEnd="-4dp"
+            android:text="@string/card_btn_more_text"
+            app:drawableRightCompat="@drawable/ic_arrow_right"
+            app:layout_constraintBottom_toBottomOf="@+id/card_item_price"
+            app:layout_constraintEnd_toStartOf="@+id/spacer_right"
+            app:layout_constraintTop_toTopOf="@+id/card_item_price"
+            tools:textColor="@color/green" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

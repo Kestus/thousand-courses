@@ -6,8 +6,6 @@
         <item name="colorOnPrimary">@color/white</item>
         <item name="colorSecondary">@color/dark_gray</item>
         <item name="colorTertiary">@color/light_gray</item>
-        <item name="strokeColor">@color/stroke</item>
-        <item name="colorAccent">@color/green</item>
 
         <item name="android:windowBackground">?attr/colorPrimary</item>
 

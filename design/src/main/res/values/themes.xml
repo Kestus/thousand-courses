@@ -6,10 +6,13 @@
         <item name="colorPrimary">@color/white</item>
         <item name="colorOnPrimary">@color/dark</item>
         <item name="colorSecondary">#3312B956</item>
+        <item name="colorTertiary">@color/light_gray</item>
+
+        <item name="strokeColor">@color/stroke</item>
+        <item name="colorAccent">@color/green</item>
+        <item name="colorContainer">@color/glass</item>
 
         <item name="android:windowBackground">?attr/colorPrimary</item>
-
-<!--        <item name="textInputStyle">@style/Widget.Thousandcourses.TextInput</item>-->
 
     </style>
 

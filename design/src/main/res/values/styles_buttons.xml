@@ -11,7 +11,21 @@
     </style>
 
     <style name="Widget.Thousandcourses.TextButton" parent="Widget.Material3.Button.TextButton">
-        <item name="android:textColor">@color/green</item>
+        <item name="android:textColor">?attr/colorAccent</item>
+        <item name="android:color">?attr/colorAccent</item>
+    </style>
+
+    <style name="Widget.Thousandcourses.TextButton.Small" parent="Widget.Thousandcourses.TextButton">
+        <item name="android:textSize">12sp</item>
+        <item name="lineHeight">15dp</item>
+        <item name="fontWeight">600</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+        <item name="android:paddingStart">8dp</item>
+        <item name="android:paddingEnd">8dp</item>
+
     </style>
 
     <style name="Widget.Thousandcourses.Button.VK" parent="Widget.AppCompat.ImageButton">
@@ -26,5 +40,10 @@
         <item name="android:src">@drawable/ic_ok</item>
         <item name="android:tint">@color/white</item>
     </style>
+
+<!--    <style name="Widget.Thousandcourses.IconButton" parent="Material">-->
+<!--        <item name="android:background">@drawable/shape_icon_button</item>-->
+
+<!--    </style>-->
 
 </resources>
