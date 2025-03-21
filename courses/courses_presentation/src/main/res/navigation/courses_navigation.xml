@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/courses_navigation"
+    app:startDestination="@id/courses_list">
+
+    <fragment
+        android:id="@+id/courses_list"
+        android:name="ru.kestus.courses_presentation.fragment.CoursesFragment"
+        android:label="fragment_courses"
+        tools:layout="@layout/fragment_courses" >
+        <action
+            android:id="@+id/action_courses_list_to_courseDetailsFragment"
+            app:destination="@id/courseDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/courseDetailsFragment"
+        android:name="ru.kestus.courses_presentation.fragment.CourseDetailsFragment"
+        android:label="fragment_course_details"
+        tools:layout="@layout/fragment_course_details" >
+        <argument
+            android:name="id"
+            app:argType="long" />
+    </fragment>
+
+</navigation>

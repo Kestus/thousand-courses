@@ -1,24 +1,20 @@
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
 
     alias(libs.plugins.kotlin.ksp)
     alias(libs.plugins.hilt.android)
-
 }
 
 android {
-    namespace = "ru.kestus.thousand_courses"
+    namespace = "ru.kestus.presentation"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "ru.kestus.thousand_courses"
         minSdk = 24
-        targetSdk = 35
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -44,10 +40,11 @@ android {
 
 dependencies {
 
+    implementation(project(":courses:courses_domain"))
+    implementation(project(":courses:courses_di"))
+
     implementation(project(":core"))
     implementation(project(":design"))
-    implementation(project(":onboarding:presentation"))
-    implementation(project(":courses:courses_presentation"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -66,4 +63,7 @@ dependencies {
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
 
+    // AdapterDelegates
+//    implementation("com.hannesdorfmann:adapterdelegates4-kotlin-dsl:4.3.2")
+    implementation(libs.adapterdelegates4.kotlin.dsl.viewbinding)
 }
